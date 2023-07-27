@@ -5,7 +5,7 @@ import classes from './AuthForm.module.css';
 
 const AuthForm = () => {
   const history = useHistory();
-  
+
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
@@ -34,6 +34,7 @@ const AuthForm = () => {
      
     }else{
       url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCGFwS9sVAtyTS7hLCpP0SXbyDrC_YLKcg'
+      
     }
 
     fetch(url,
@@ -65,7 +66,6 @@ const AuthForm = () => {
       }).then(data => {
             authCtx.login(data.idToken);
             history.replace('/');
-        // localStorage.setItem(data.idToken);
       })
       .catch((err) => {
           alert(err.message)
